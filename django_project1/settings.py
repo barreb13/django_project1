@@ -10,7 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import os
-#import django_heroku
+import django_heroku
 
 from pathlib import Path
 
@@ -56,6 +56,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware'    #adding for heroku
 ]
 
 ROOT_URLCONF = 'django_project1.urls'
@@ -132,6 +133,12 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 #for deploying to heroku
 STATIC_URL = '/static/'
 
+#fixing styling for heroku
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"), 
+]
+
+
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')    #where uploaded files will be stored on the file system
 MEDIA_URL = '/media/'                           #how we access image in the browser
 
@@ -164,4 +171,4 @@ AWS_DEFAULT_ACL = None
 
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
-#django_heroku.settings(locals())
+django_heroku.settings(locals())
