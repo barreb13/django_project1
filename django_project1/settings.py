@@ -134,9 +134,9 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
 #fixing styling for heroku
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"), 
-]
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, "static"), 
+# ]
 
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')    #where uploaded files will be stored on the file system
